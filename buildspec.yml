@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands:
       - echo Logging in to AWS CodeArtifact...
-      - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain nextwork --domain-owner $AWS_ACCOUNT_ID --region us-east-2 --query authorizationToken --output text`
+      - CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain nextwork --domain-owner 197446684431 --region us-east-2 --query authorizationToken --output text`
       - export CODEARTIFACT_AUTH_TOKEN
   build:
     commands:
@@ -22,5 +22,3 @@ artifacts:
   files:
     - target/*.war
   discard-paths: no
-
-  ## $AWS_ACCOUNT_ID
