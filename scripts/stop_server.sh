@@ -1,13 +1,9 @@
 #!/bin/bash
-
-# Detener procesos de httpd si existen sin usar systemctl
 isExistApp="$(pgrep httpd)"
 if [[ -n $isExistApp ]]; then
-    sudo pkill -f httpd
+sudo systemctl stop httpd.service
 fi
-
-# Detener procesos de tomcat si existen sin usar systemctl
-isExistApp="$(pgrep -f tomcat)"
+isExistApp="$(pgrep tomcat)"
 if [[ -n $isExistApp ]]; then
-    sudo pkill -f tomcat
+sudo systemctl stop tomcat.service
 fi
