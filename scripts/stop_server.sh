@@ -1,17 +1,12 @@
 #!/bin/bash
 
-# Detener Apache/httpd si está corriendo
+# Detener procesos de httpd si existen sin usar systemctl
 isExistApp="$(pgrep httpd)"
 if [[ -n $isExistApp ]]; then
-    sudo systemctl stop httpd.service
+    sudo pkill -f httpd
 fi
 
-# Detener Tomcat si está corriendo (ajusta la ruta si es distinta, ej: /usr/local/tomcat o /opt/tomcat)
-if [ -f /opt/tomcat/bin/shutdown.sh ]; then
-    sudo /opt/tomcat/bin/shutdown.sh
-fi
-
-# Opcional: Asegurarse de terminar cualquier proceso remanente de Tomcat
+# Detener procesos de tomcat si existen sin usar systemctl
 isExistApp="$(pgrep -f tomcat)"
 if [[ -n $isExistApp ]]; then
     sudo pkill -f tomcat
